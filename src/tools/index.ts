@@ -60,6 +60,7 @@ import { tool as cypher } from './encryption';
 import { tool as etaCalculator } from './eta-calculator';
 import { tool as percentageCalculator } from './percentage-calculator';
 import { tool as resistorCalculator } from './resistor-calculator';
+import { tool as barcodeGenerator } from './barcode-generator';
 import { tool as gitMemo } from './git-memo';
 import { tool as hashText } from './hash-text';
 import { tool as hmacGenerator } from './hmac-generator';
@@ -169,7 +170,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     name: 'Math',
-    components: [mathEvaluator, etaCalculator, percentageCalculator, resistorCalculator],
+    components: [mathEvaluator, etaCalculator, percentageCalculator, resistorCalculator, barcodeGenerator],
   },
   {
     name: 'Measurement',

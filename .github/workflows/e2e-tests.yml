@@ -23,10 +23,10 @@ jobs:
 
       - name: Get Playwright version
         id: playwright-version
-        run: echo "PLAYWRIGHT_VERSION=$(jq -r .dependencies.playwright package.json)" >> "$GITHUB_OUTPUT"
+        run: echo "PLAYWRIGHT_VERSION=$(jq -r '.devDependencies["@playwright/test"]' package.json)" >> "$GITHUB_OUTPUT"
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --ignore-scripts
 
       - name: Build app
         run: pnpm build
@@ -41,7 +41,7 @@ jobs:
             ${{ runner.os }}-playwright-
 
       - name: Install Playwright Browsers
-        run: pnpm exec playwright install --with-deps
+        run: ./node_modules/.bin/playwright install --with-deps
 
       - name: Run Playwright tests
         run: pnpm run test:e2e --shard=${{ matrix.shard }}
